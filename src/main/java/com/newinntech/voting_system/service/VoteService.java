@@ -32,7 +32,7 @@ public class VoteService {
         Voter voter = voterRepository.findById(request.getVoterId())
                 .orElseThrow(() -> new ResourceNotFoundException("Votante no encontrado con ID: " + request.getVoterId()));
 
-        // 2. Validar regla de negocio: ¿Ya votó?
+        // 2. Validar regla de negocio: ¿Ya ha votado el votante?
         if (Boolean.TRUE.equals(voter.getHasVoted())) {
             throw new VotingException("El votante con ID " + voter.getId() + " ya ha registrado su voto previamente.");
         }

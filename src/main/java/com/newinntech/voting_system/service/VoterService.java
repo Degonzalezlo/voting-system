@@ -29,11 +29,10 @@ public class VoterService {
         if (voterRepository.existsByEmail(request.getEmail())) {
             throw new VotingException("Ya existe un votante registrado con el email: " + request.getEmail());
         }
-
+        // Validar si ya existe un candidato con el mismo nombre
         if(candidateRepository.existsByName(request.getName())) {
             throw new VotingException("Ya existe un candidato registrado con el nombre: " + request.getName());
         }
-
 
         Voter voter = Voter.builder()
                 .name(request.getName())

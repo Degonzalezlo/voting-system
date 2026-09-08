@@ -34,6 +34,41 @@ API RESTful profesional desarrollada con Spring Boot para la gestión integral d
 
 ---
 
+## 📊 Evidencias de Funcionamiento y Capturas
+
+### Autenticación y Candidatos
+![Autenticación Básica](./src/main/resources/assets/Basic_auth.png)
+![Crear candidato](./src/main/resources/assets/candidate_create.png)
+![Obtener candidatos](./src/main/resources/assets/candidates_get_all.png)
+![Obtener candidato por ID](./src/main/resources/assets/candidate_by_Id.png)
+![Borrar candidato](./src/main/resources/assets/Delete_candidate.png)
+
+### Votantes y Paginación
+![Crear Votante](./src/main/resources/assets/Voter_create.png)
+![Obtener Todos los votantes](./src/main/resources/assets/Voters_get_all.png)
+![Obtener votante por ID](./src/main/resources/assets/Voters_by_Id.png)
+![Borrar Votante por ID](./src/main/resources/assets/Delete_Voters_by_Id.png)
+![Obtener votantes con Paginación](./src/main/resources/assets/Voters_pagination.png)
+
+### Votos y Estadísticas Generadas
+![Emitir voto](./src/main/resources/assets/Cast_votes.png)
+![Obtener todos los votos y su metadata](./src/main/resources/assets/Votes_get_all.png)
+![Obtener estadísticas de Votos](./src/main/resources/assets/Votes_get_statistics.png)
+
+### Control de Excepciones y Reglas de Negocio
+![Excepción Recurso No encontrado](./src/main/resources/assets/Exception_Id_NotFound.png)
+![Excepción Votante duplicado](./src/main/resources/assets/Voters_duplicated_exception.png)
+![Excepción Votante No puede ser Candidato](./src/main/resources/assets/Exception_voter.png)
+![Excepción Candidato No puede ser votante](./src/main/resources/assets/Candidate_exception.png)
+![Excepción Voto Duplicado por ID](./src/main/resources/assets/Vote_duplicated_by_Id.png)
+![Excepción Candidato No encontrado por ID](./src/main/resources/assets/Candidate_NotFound_by_Id.png)
+
+### Persistencia y Documentación Swagger
+![Cambio de Estado del votante en la DB (has_voted=True)](./src/main/resources/assets/Change_status_hasVoted.png)
+![Interfaz Swagger UI](./src/main/resources/assets/Swagger_interface_documentation.png)
+
+---
+
 ## 🚀 Guía de Instalación y Ejecución Local
 
 ### Prerrequisitos
@@ -50,7 +85,6 @@ Crea una base de datos en PostgreSQL llamada `voting_db`. Ajusta tus credenciale
 spring.datasource.url=jdbc:postgresql://localhost:5432/voting_db
 spring.datasource.username=postgres
 spring.datasource.password=tu_contraseña
-
 
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true

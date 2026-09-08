@@ -28,7 +28,7 @@ public class CandidateService {
         if (candidateRepository.existsByName(request.getName())) {
             throw new VotingException("Ya existe un candidato registrado con el nombre: " + request.getName());
         }
-
+        // Validar que no exista un votante con el mismo nombre
         if(voterRepository.findAll().stream().anyMatch(voter -> voter.getName().equalsIgnoreCase(request.getName()))) {
             throw new VotingException("La persona " + request.getName() + "' ya está registrada como Votante.");
         }
