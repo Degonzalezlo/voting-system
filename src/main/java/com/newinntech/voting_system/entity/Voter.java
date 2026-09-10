@@ -27,7 +27,7 @@ public class Voter {
     @Column(nullable = false, unique = true, length = 150)
     private String email;
 
-    @Column(name = "has_voted", nullable = false)
+    @Column(name = "vote_count", nullable = false)
     @Builder.Default
-    private Boolean hasVoted = false;
+    private Integer voteCount = 0; // Cambiado de Boolean a Integer para contar los votos
 }

@@ -33,8 +33,8 @@ public class VoteService {
                 .orElseThrow(() -> new ResourceNotFoundException("Votante no encontrado con ID: " + request.getVoterId()));
 
         // 2. Validar regla de negocio: ¿Ya ha votado el votante?
-        if (Boolean.TRUE.equals(voter.getHasVoted())) {
-            throw new VotingException("El votante con ID " + voter.getId() + " ya ha registrado su voto previamente.");
+        if (voter.getVoteCount() >= 2 ) { // Cambiado de hasVoted a voteCount
+            throw new VotingException("El votante con ID: " + request.getVoterId() + " ya ha emitido su voto.");
         }
 
         // 3. Validar existencia del candidato
@@ -42,11 +42,9 @@ public class VoteService {
                 .orElseThrow(() -> new ResourceNotFoundException("Candidato no encontrado con ID: " + request.getCandidateId()));
 
         // 4. Actualizar estado del votante e incrementar votos del candidato
-        voter.setHasVoted(true);
+        voter.setVoteCount(voter.getVoteCount() + 1);
         candidate.setVotes(candidate.getVotes() + 1);
 
-        voterRepository.save(voter);
-        candidateRepository.save(candidate);
 
         // 5. Crear y guardar el registro del voto
         Vote vote = Vote.builder()

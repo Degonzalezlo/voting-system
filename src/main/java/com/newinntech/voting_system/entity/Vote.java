@@ -17,9 +17,9 @@ public class Vote {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Relación de 1 a 1: Garantiza que un votante solo tenga un registro de voto
-    @OneToOne(optional = false)
-    @JoinColumn(name = "voter_id", referencedColumnName = "id", nullable = false, unique = true)
+    //
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "voter_id", referencedColumnName = "id", nullable = false, unique = false)
     private Voter voter;
 
     // Relación Muchos a 1: Un candidato recibe múltiples votos
